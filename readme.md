@@ -12,6 +12,7 @@ Turn your tweet into a blog post.
 1. npm install
 2. run mongo
 3. node app.js
+4. create env file based on env example (Get values from developer twitter app)
 ```
 
 ## Usecase
