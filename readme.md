@@ -19,3 +19,8 @@ Turn your tweet into a blog post.
 
 - People who wants to blog from twitter
 - For people who'd like to document their tweet as a blog (save permanently or might be able to update/delete later)
+
+
+## Max Result
+@services/TwitterService
+change MAX_RESULTS for whatever number you want to stream tweets for the first time
