@@ -6,6 +6,8 @@ Turn your tweet into a blog post.
 -Server side render (SEO friendly)
 -Techstack: NodeJS, Express and Mongo (mongoose) as database
 
+- [Demo video](https://www.youtube.com/watch?v=QhosFYuXqAc)
+
 ## Usage
 
 ```bash
