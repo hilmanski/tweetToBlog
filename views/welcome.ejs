@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+    <h1>Turn Your Tweet To Blog</h1>
+    <input id="twitterHandle" type="text" placeholder="twitter handle @...">
+    <button onclick="requestBlog()">Yes Please</button>
+
+    <h3 id="loadSign" class="hidden">Loading... </h3>
+    <h3 id="errorMsg" class="hidden"> </h3>
+
+    <script>
+        function requestBlog() {
+            const twUsername = document.getElementById('twitterHandle').value
+            const loadSign = document.getElementById('loadSign')
+
+            loadSign.classList.toggle('hidden')
+
+            fetch(`/blogit/${twUsername}`)
+                .then(response => response.json())
+                .then(data => {
+                    loadSign.classList.toggle('hidden')
+
+                    if(data.success == false) {
+                        document.getElementById('errorMsg').classList.toggle('hidden')
+                        document.getElementById('errorMsg').innerHTML = data.msg
+                    } else 
+                        window.location.href = `/blog/${data.username}`;
+                        
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+
+</body>
+</html>

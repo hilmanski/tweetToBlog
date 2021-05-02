@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=blog['title'] %></title>
+    <meta name="description" content="<%=blog['body']%>">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <% if (blog.thumbnail_url != '') { %>
+        <img src="<%= blog.thumbnail_url %>" alt="" width="150">
+    <% } %>
+
+    <h3><%=blog['title'] %></h3>
+
+    <div style="white-space: pre-line;">
+        <%- blog['body'] %>
+    </div>
+
+    <p><span>
+        <%= moment(blog['createdAt']).format("MM/DD/YYYY"); %>
+    </span></p>
+
+    <button onclick=" window.history.back();">Go Back</button>
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+
+================
+TODO: 
+================
+1. Create list of log version
+2. Separate file nicely, route, func, twitter,... [DONE]
+3. Linter, follow some good standart (find one)
+4. avoid callback hell, write nice awai asycn func
+5. Github! 
+    at readme, write variant of case, how could these be useful
+        (like add delimiter...)
+    
+
+6. Vercel
+7. HackerNews
+8. ProductHunt
+
+================
+CURRENT CAVEAT: 
+================
+1. conversation could be cutted for first time 
+(because if update, automate get the last time stamp)
+(except the rule apply only when they start using, the tweet start from 0)
+temporary: before update, remind people to wait +- 1 minute
+good solution: always check the conversation_id ? 
+    let people update individual post(based on conversation id)
+
+1. test aren thread. what if each tweet on threda have image. what will happen?
+
+2. blog not make sense if you reply on reply people
+    (prevent reply onpeople's reply as thread)
+
+3. if quoted
+    -> embed tweet at render? using the link?
+
+============================================================
+Alpha 0.1 :: 
+    JUST PROTOTYPE, SEE HOW PEOPLE RESPOND
+============================================================
+Goal: just to share code on twitter and github (add portofolio)
+ONLY PUBLISH IF: update new content works.

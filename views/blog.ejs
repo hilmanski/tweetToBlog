@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Blog</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <h2>Blog <%=user['username'] %></h2>
+    <p><%=user['name'] %></p>
+    <p><%=user['description'] %></p>
+    <img src="<%=user['profile_image_url'] %>" alt="">
+
+    <button onclick="fetchNew()">Update New Content</button>
+    <h3 id="loadSign" class="hidden">Loading... </h3>
+    <hr>
+
+    <div>
+        <% for(var i=0; i<blogs.length; i++) {%>
+            <p>
+                <a href="/blog/show/<%=blogs[i]['slug'] %>">
+                    <%=blogs[i]['title'] %>
+                </a>
+                -
+                <span> <%= moment(blogs[i]['createdAt']).format("MM/DD/YYYY"); %> </span>
+            </p>
+            <% } %>
+    </div>
+
+    <script>
+        function fetchNew() {
+            const loadSign = document.getElementById('loadSign')
+            loadSign.classList.toggle('hidden')
+
+            fetch(`/blog/update/<%= user['id'] %>`)
+                .then(response => response.json())
+                .then(data => {
+                    loadSign.classList.toggle('hidden')
+                    location.reload()
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+</html>
