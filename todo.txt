@@ -1,8 +1,9 @@
-
-
 ================
 TODO: 
 ================
+
+0. Prevent double entry data
+
 1. Create list of log version
 2. Separate file nicely, route, func, twitter,... [DONE]
 3. Linter, follow some good standart (find one)
@@ -12,7 +13,7 @@ TODO:
         (like add delimiter...)
     
 
-6. Vercel
+6. Vercel / AWS Free Tier
 7. HackerNews
 8. ProductHunt
 

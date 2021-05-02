@@ -13,7 +13,7 @@ exports.getUser = async function(username) {
     }
 }
 
-exports.saveUser = function (userData) {
+exports.saveUser = async function (userData) {
     const user = UserModel({
         id: userData.id,
         name: userData.name,
@@ -23,11 +23,17 @@ exports.saveUser = function (userData) {
         profile_image_url: userData.profile_image_url
     })
 
-    user.save(function (err, doc) {
-        if (err) return console.error(err);
-        console.log("User inserted succussfully!");
-        return
+    // user.save(function (err, doc) {
+    //     if (err) return console.error(err);
+    //     console.log("User inserted succussfully!");
+    //     return
+    // });
+    const doc = await UserModel.findOneAndUpdate({ id: userData.id }, user, {
+        new: true,
+        upsert: true // Make this update into an upsert
     });
+
+    return doc
 }
 
 //========================
@@ -53,14 +59,20 @@ exports.getBlogs = async function(authorID) {
 }
 
 exports.saveBlog = function (blogs) {
-    BlogModel.insertMany(blogs, function (err, docs) {
-        if (err) {
-            return console.error(err);
-        } else {
-            console.log("Multiple documents inserted to Collection");
-            return true
-        }
-    });
+    BlogModel.bulkWrite(
+        blogs.map((blog) =>
+        ({
+            updateOne: {
+                filter: { conversation_id: blog.conversation_id },
+                update: { $set: blog },
+                upsert: true
+            }
+        })
+        )
+    ).then(res => {
+        console.log("Multiple documents inserted to Collection");
+        return true
+    }).catch( err => console.log(err.message));
 }
 
 exports.getLatestBlogByUser = async function (authorID) {
