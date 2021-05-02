@@ -1,10 +1,10 @@
-# Tweet To Blog
+# Tweet To Blog [Node.js]
 
 Turn your tweet into a blog post. 
--It will filter out "retweet" , "reply to other people" , and "link/media only". 
--A thread will turn to a single post
--Server side render (SEO friendly)
--Techstack: NodeJS, Express and Mongo (mongoose) as database
+- It will filter out "retweet" , "reply to other people" , and "link/media only". 
+- A thread will turn to a single post
+- Server side render (SEO friendly)
+- Techstack: NodeJS, Express and Mongo (mongoose) as database
 
 - [Demo video](https://www.youtube.com/watch?v=QhosFYuXqAc)
 
